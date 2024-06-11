@@ -1,29 +1,21 @@
 const validChoices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
+
+const initMessage = document.querySelector("p");
+const enemyScore = document.getElementById("score");
+const roundKeeper = document.getElementById("roundKeeper");
+const weaponBtns = document.querySelectorAll("#weaponContainer button");
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * validChoices.length);
   return validChoices[randomIndex];
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("Choose your weapon: rock, paper, or scissors?");
-  humanChoice = humanChoice.toLowerCase();
-
-  while (!validChoices.includes(humanChoice)) {
-    console.log("Invalid choice. You need to choose rock, paper, or scissors.");
-    humanChoice = prompt("Choose your weapon: rock, paper, or scissors?");
-    humanChoice = humanChoice.toLowerCase();
-  }
-
-  return humanChoice;
-}
-
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
-    return 0;
+    initMessage.textContent = `You chose,  ${humanChoice} the enemy chose ${computerChoice}. That makes it a Tie!`;
   }
 
   if (
@@ -31,37 +23,49 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
-    return 1;
+    initMessage.textContent = `You chose, ${humanChoice} the enemy chose ${computerChoice}. You win! :)`;
+    humanScore++;
   } else {
-    console.log(`You lose, ${computerChoice} beats ${humanChoice}!`);
-    return -1;
+    initMessage.textContent = `You chose, ${humanChoice} the enemy chose ${computerChoice}. You loose :(`;
+    computerScore++;
+  }
+
+  enemyScore.innerHTML = `Current Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
+}
+
+function endGame() {
+  weaponBtns.forEach((button) => (button.disabled = true));
+  if (humanScore > enemyScore) {
+    initMessage.textContent =
+      "Game Over! Congratz you won! Thanks for playing.";
+  } else {
+    initMessage.textContent =
+      "Game Over! Sorry you lost :( Thanks for playing.";
   }
 }
 
-function playGame() {
-  for (let i = 1; i <= 5; i++) {
-    console.log(`Welcome to round ${i}`);
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  round = 0;
+  initMessage.textContent = "";
+  enemyScore.innerHTML = `Current Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
+  roundKeeper.innerHTML = `Round ${round}`;
+  playAgainButton.style.display = "none";
+  weaponBtns.forEach((button) => (button.disabled = false));
+}
+
+weaponBtns.forEach((button) => {
+  button.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
-    console.log(`Human chose: ${humanChoice}`);
-    console.log(`Computer chose: ${computerChoice}`);
-
-    const result = playRound(humanChoice, computerChoice);
-
-    if (result === 1) {
-      humanScore++;
-    } else if (result === -1) {
-      computerScore++;
+    playRound(button.id, computerChoice);
+    round++;
+    roundKeeper.innerHTML = `Round ${round}`;
+    if (round === 5) {
+      endGame();
+      playAgainButton.style.display = "block";
     }
-  }
+  });
+});
 
-  console.log(
-    `Game is finished! Computer scored ${computerScore} points, Human scored ${humanScore} points!`
-  );
-}
-
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-
-playGame(humanChoice, computerChoice);
+playAgainButton.addEventListener("click", resetGame);

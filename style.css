@@ -1,4 +1,90 @@
-h1 {
-  font-size: 24px;
-  color: blue;
+/* General Reset */
+body,
+h1,
+h2,
+p,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3a7e5f;
+  font-family: "Happy Monkey", system-ui;
+}
+
+/* Game Container Styles */
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title and Round Keeper Styles */
+.gameContainer h1 {
+  margin-bottom: 10px;
+}
+
+.gameContainer h2 {
+  margin-bottom: 20px;
+}
+
+/* Weapon Container Styles */
+#weaponContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+#weaponContainer button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #333;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#weaponContainer button:hover {
+  background-color: #ddd;
+}
+
+/* Current Result and Score Styles */
+#currentResult {
+  margin-bottom: 10px;
+}
+
+#score {
+  margin-top: 10px;
+}
+
+/* Play Again Button Styles */
+#playAgainButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #333;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#playAgainButton:hover {
+  background-color: #ddd;
 }
