@@ -11,6 +11,7 @@ button {
 p {
   margin-bottom: 5px;
 }
+
 /* Body Styles */
 body {
   display: flex;
@@ -19,6 +20,8 @@ body {
   height: 100vh;
   background-color: #3a7e5f;
   font-family: "Happy Monkey", system-ui;
+  margin: 0;
+  padding: 0;
 }
 
 /* Game Container Styles */
@@ -28,36 +31,40 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  padding: 60px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  max-width: 90%;
+  width: 800px;
+  margin: 20px;
 }
 
-/* Title and Round Keeper Styles */
 .gameContainer h1 {
   margin-bottom: 10px;
+  font-size: 2em;
 }
 
 .gameContainer h2 {
   margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 /* Weapon Container Styles */
 .weaponContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
   margin-bottom: 20px;
 }
 
 .weaponContainer button {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1em;
   background-color: #fff;
   border-radius: 5px;
+  margin-top: 5px;
 }
 
 .userWeaponContainer button:hover {
@@ -70,14 +77,14 @@ body {
   margin-top: 20px;
 }
 
-/* Current Result and Score Styles */
-
 .gameKeeperDisplay {
-  width: 40vh;
+  width: 80%;
+  max-width: 800px;
   background-color: #3a7e5f;
   padding: 10px;
   border-radius: 5px;
   color: rgb(241, 245, 239);
+  margin-bottom: 20px;
 }
 
 #currentResult {
@@ -86,12 +93,14 @@ body {
 
 #score {
   margin-top: 10px;
+  width: 80%;
+  max-width: 400px;
 }
 
 /* Play Again Button Styles */
 #playAgainButton {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1em;
   border: 2px solid #333;
   background-color: #fff;
   border-radius: 5px;
@@ -113,6 +122,7 @@ body {
 
 img {
   width: 50px;
+  max-width: 100%;
 }
 
 @keyframes flash {
@@ -133,17 +143,76 @@ img {
 
 #roundKeeper {
   color: #12650b;
+  font-size: 1.2em;
 }
+
 table {
   border: 1px solid black;
   table-layout: fixed;
-  width: 200px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 th,
 td {
   border: 1px solid black;
-  width: 100px;
+  width: 50%;
   overflow: hidden;
   padding: 5px;
+  font-size: 1em;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+  .weaponContainer {
+    flex-direction: row;
+  }
+
+  .weaponContainer button {
+    flex: none;
+    margin: 10px;
+  }
+
+  .gameKeeperDisplay {
+    width: 60%;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    height: 100vh;
+  }
+
+  .gameContainer {
+    padding: 40px;
+    max-width: 600px;
+  }
+
+  .gameContainer h1 {
+    font-size: 2.5em;
+  }
+
+  .gameContainer h2 {
+    font-size: 2em;
+  }
+
+  .weaponContainer button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px;
+  }
+
+  .gameKeeperDisplay {
+    width: 70%;
+  }
+
+  #score {
+    width: 50%;
+  }
+
+  th,
+  td {
+    font-size: 1.2em;
+  }
 }
