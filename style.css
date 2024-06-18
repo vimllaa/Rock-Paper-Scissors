@@ -130,3 +130,20 @@ img {
 .flash {
   animation: flash 2s ease;
 }
+
+#roundKeeper {
+  color: #12650b;
+}
+table {
+  border: 1px solid black;
+  table-layout: fixed;
+  width: 200px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  width: 100px;
+  overflow: hidden;
+  padding: 5px;
+}

@@ -4,7 +4,8 @@ let computerScore = 0;
 let round = 0;
 
 const initMessage = document.querySelector("p");
-const enemyScore = document.getElementById("score");
+const enemyScore = document.getElementById("enemyScore");
+const userScore = document.getElementById("userScore");
 const roundKeeper = document.getElementById("roundKeeper");
 const weaponBtns = document.querySelectorAll("#userWeapon button");
 
@@ -27,12 +28,12 @@ function playRound(humanChoice, computerChoice) {
   ) {
     initMessage.innerHTML = `You chose ${humanChoice}, the enemy chose ${computerChoice}. <br /> You won! :)`;
     humanScore++;
+    userScore.innerHTML = `${humanScore}`;
   } else {
     initMessage.innerHTML = `You chose ${humanChoice}, the enemy chose ${computerChoice}. <br /> You lost :(`;
     computerScore++;
+    enemyScore.innerHTML = `${computerScore}`;
   }
-
-  enemyScore.innerHTML = `Current Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
 }
 
 function endGame() {
@@ -44,7 +45,6 @@ function endGame() {
     initMessage.innerHTML =
       "Game Over! <br /> Sorry you lost. Thanks for playing.";
   }
-  enemyScore.innerHTML = `Final Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
 }
 
 function resetGame() {
@@ -52,7 +52,8 @@ function resetGame() {
   computerScore = 0;
   round = 0;
   initMessage.textContent = "";
-  enemyScore.innerHTML = `Current Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
+  enemyScore.innerHTML = `0`;
+  userScore.innerHTML = `0`;
   roundKeeper.innerHTML = `Round ${round}`;
   playAgainButton.classList.remove("visible");
   weaponBtns.forEach((button) => (button.disabled = false));
@@ -80,7 +81,7 @@ weaponBtns.forEach((button) => {
       enemyRockButton.classList.remove("flash");
       enemyPaperButton.classList.remove("flash");
       enemyScissorsButton.classList.remove("flash");
-    }, 500); // Duration of the flash animation
+    }, 500);
 
     if (round === 5) {
       endGame();
