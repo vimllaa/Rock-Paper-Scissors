@@ -5,7 +5,7 @@ h2,
 p,
 button {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 p {
@@ -32,7 +32,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  height: 50vh;
 }
 
 /* Title and Round Keeper Styles */
@@ -72,6 +71,15 @@ body {
 }
 
 /* Current Result and Score Styles */
+
+.gameKeeperDisplay {
+  width: 40vh;
+  background-color: #3a7e5f;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(241, 245, 239);
+}
+
 #currentResult {
   margin-bottom: 10px;
 }

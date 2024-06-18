@@ -19,18 +19,16 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    initMessage.textContent = `You chose,  ${humanChoice} the enemy chose ${computerChoice}. That makes it a Tie!`;
-  }
-
-  if (
+    initMessage.innerHTML = `You chose,  ${humanChoice} the enemy chose ${computerChoice}. <br /> That makes it a Tie!`;
+  } else if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    initMessage.textContent = `You chose, ${humanChoice} the enemy chose ${computerChoice}. You win! :)`;
+    initMessage.innerHTML = `You chose ${humanChoice}, the enemy chose ${computerChoice}. <br /> You won! :)`;
     humanScore++;
   } else {
-    initMessage.textContent = `You chose, ${humanChoice} the enemy chose ${computerChoice}. You loose :(`;
+    initMessage.innerHTML = `You chose ${humanChoice}, the enemy chose ${computerChoice}. <br /> You lost :(`;
     computerScore++;
   }
 
@@ -40,12 +38,13 @@ function playRound(humanChoice, computerChoice) {
 function endGame() {
   weaponBtns.forEach((button) => (button.disabled = true));
   if (humanScore > enemyScore) {
-    initMessage.textContent =
-      "Game Over! Congratz you won! Thanks for playing.";
+    initMessage.innerHTML =
+      "Game Over!  <br /> Congratz you won! Thanks for playing.";
   } else {
-    initMessage.textContent =
-      "Game Over! Sorry you lost :( Thanks for playing.";
+    initMessage.innerHTML =
+      "Game Over! <br /> Sorry you lost. Thanks for playing.";
   }
+  enemyScore.innerHTML = `Final Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
 }
 
 function resetGame() {
@@ -57,7 +56,8 @@ function resetGame() {
   roundKeeper.innerHTML = `Round ${round}`;
   playAgainButton.classList.remove("visible");
   weaponBtns.forEach((button) => (button.disabled = false));
-  initMessage.textContent = "Click below to choose your weapon!";
+  initMessage.innerHTML =
+    "Click below to choose your weapon! <br /> Good Luck! ";
 }
 
 weaponBtns.forEach((button) => {
