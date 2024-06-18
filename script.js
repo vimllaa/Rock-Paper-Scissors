@@ -8,10 +8,7 @@ const enemyScore = document.getElementById("enemyScore");
 const userScore = document.getElementById("userScore");
 const roundKeeper = document.getElementById("roundKeeper");
 const weaponBtns = document.querySelectorAll("#userWeapon button");
-
-const enemyRockButton = document.getElementById("enemyRock");
-const enemyPaperButton = document.getElementById("enemyPaper");
-const enemyScissorsButton = document.getElementById("enemyScissors");
+const enemyChoiseDisplay = document.getElementById("choiseByEnemy");
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * validChoices.length);
@@ -19,6 +16,8 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+  displayEnemyChoise(computerChoice);
+
   if (humanChoice === computerChoice) {
     initMessage.innerHTML = `You chose,  ${humanChoice} the enemy chose ${computerChoice}. <br /> That makes it a Tie!`;
   } else if (
@@ -57,6 +56,7 @@ function resetGame() {
   roundKeeper.innerHTML = `Round ${round}`;
   playAgainButton.classList.remove("visible");
   weaponBtns.forEach((button) => (button.disabled = false));
+  enemyChoiseDisplay.src = `Images/questionmark.svg`;
   initMessage.innerHTML =
     "Click below to choose your weapon! <br /> Good Luck! ";
 }
@@ -65,23 +65,16 @@ weaponBtns.forEach((button) => {
   button.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
 
+    button.classList.add("button-click");
+
+    // Remove the class after the animation completes
+    setTimeout(() => {
+      button.classList.remove("button-click");
+    }, 300);
+
     playRound(button.id, computerChoice);
     round++;
     roundKeeper.innerHTML = `Round ${round}`;
-
-    if (computerChoice === "scissors") {
-      enemyScissorsButton.classList.add("flash");
-    } else if (computerChoice === "rock") {
-      enemyRockButton.classList.add("flash");
-    } else if (computerChoice === "paper") {
-      enemyPaperButton.classList.add("flash");
-    }
-
-    setTimeout(() => {
-      enemyRockButton.classList.remove("flash");
-      enemyPaperButton.classList.remove("flash");
-      enemyScissorsButton.classList.remove("flash");
-    }, 500);
 
     if (round === 5) {
       endGame();
@@ -91,3 +84,11 @@ weaponBtns.forEach((button) => {
 });
 
 playAgainButton.addEventListener("click", resetGame);
+
+function displayEnemyChoise(weapon) {
+  enemyChoiseDisplay.src = `Images/${weapon}.svg`;
+  enemyChoiseDisplay.classList.remove("fade-in");
+
+  void enemyChoiseDisplay.offsetWidth;
+  enemyChoiseDisplay.classList.add("fade-in");
+}

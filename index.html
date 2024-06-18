@@ -24,30 +24,21 @@
         Click below to choose your weapon! <br />
         Good Luck!
       </p>
-      <div class="weaponContainer" id="weaponContainer">
-        <div class="userWeaponContainer" id="userWeapon">
-          <p>Your weapon</p>
-          <button id="rock"><img src="Images/rock.svg" alt="Rock" /></button>
-          <button id="paper">
-            <img src="Images/paper.svg" alt="paper pixel art" />
-          </button>
-          <button id="scissors">
-            <img src="Images/scissors.svg" alt="paper pixel art" />
-          </button>
-        </div>
 
-        <div class="enemyWeaponContainer" id="enemyWeapon">
-          <p>Enemy's weapon</p>
-          <button id="enemyRock">
-            <img src="Images/rock.svg" alt="Rock" />
-          </button>
-          <button id="enemyPaper">
-            <img src="Images/paper.svg" alt="Paper" />
-          </button>
-          <button id="enemyScissors">
-            <img src="Images/scissors.svg" alt="Scissors" />
-          </button>
-        </div>
+      <h3>Your weapon</h3>
+      <div class="userWeaponContainer" id="userWeapon">
+        <button id="rock"><img src="Images/rock.svg" alt="Rock" /></button>
+        <button id="paper">
+          <img src="Images/paper.svg" alt="paper pixel art" />
+        </button>
+        <button id="scissors">
+          <img src="Images/scissors.svg" alt="paper pixel art" />
+        </button>
+      </div>
+
+      <div class="enemyWeaponContainer" id="enemyWeapon">
+        <h3>Enemy's weapon</h3>
+        <img src="Images/questionmark.svg" id="choiseByEnemy" />
       </div>
 
       <table id="score">
@@ -64,10 +55,6 @@
         </tr>
       </table>
 
-      <!-- <p id="score">
-        Current Score <br />
-        Enemy 0 | Human 0
-      </p> -->
       <button id="playAgainButton" class="hidden">Play Again</button>
     </div>
 
