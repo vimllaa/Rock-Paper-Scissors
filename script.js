@@ -7,6 +7,7 @@ const initMessage = document.querySelector("p");
 const enemyScore = document.getElementById("score");
 const roundKeeper = document.getElementById("roundKeeper");
 const weaponBtns = document.querySelectorAll("#weaponContainer button");
+const enemyWeapon = document.getElementById("enemyWeapon");
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * validChoices.length);
@@ -51,8 +52,9 @@ function resetGame() {
   initMessage.textContent = "";
   enemyScore.innerHTML = `Current Score <br /> Enemy ${computerScore} | Human ${humanScore}`;
   roundKeeper.innerHTML = `Round ${round}`;
-  playAgainButton.style.display = "none";
+  playAgainButton.classList.remove("visible");
   weaponBtns.forEach((button) => (button.disabled = false));
+  initMessage.textContent = "Click below to choose your weapon!";
 }
 
 weaponBtns.forEach((button) => {
@@ -63,7 +65,7 @@ weaponBtns.forEach((button) => {
     roundKeeper.innerHTML = `Round ${round}`;
     if (round === 5) {
       endGame();
-      playAgainButton.style.display = "block";
+      playAgainButton.classList.add("visible");
     }
   });
 });

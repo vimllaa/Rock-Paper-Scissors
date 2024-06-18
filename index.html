@@ -17,23 +17,36 @@
     <div class="gameContainer">
       <h1>Welcome to the Rock, Paper, Scissors Game!</h1>
       <h2 id="roundKeeper">Round 0</h2>
+      <p>Click below to choose your weapon!</p>
+      <div class="weaponContainer" id="weaponContainer">
+        <div class="innerWeaponContainer" id="userWeapon">
+          <p>Your weapon</p>
+          <button id="rock"><img src="Images/stone.jpg" alt="Rock" /></button>
+          <button id="paper">
+            <img src="Images/paper.jpg" alt="paper pixel art" />
+          </button>
+          <button id="scissors">
+            <img src="Images/scissors.jpg" alt="paper pixel art" />
+          </button>
+        </div>
 
-      <div id="weaponContainer">
-        <button id="rock"><img src="Images/stone.jpg" alt="Rock" /></button>
-        <button id="paper">
-          <img src="Images/paper.jpg" alt="paper pixel art" />
-        </button>
-        <button id="scissors">
-          <img src="Images/scissors.jpg" alt="paper pixel art" />
-        </button>
+        <div class="innerWeaponContainer" id="enemyWeapon">
+          <p>Enemy's weapon</p>
+          <button id="rock"><img src="Images/stone.jpg" alt="Rock" /></button>
+          <button id="paper">
+            <img src="Images/paper.jpg" alt="paper pixel art" />
+          </button>
+          <button id="scissors">
+            <img src="Images/scissors.jpg" alt="paper pixel art" />
+          </button>
+        </div>
       </div>
 
-      <p id="currentResult">No current game, choose your weapon above!</p>
-      <button id="playAgainButton" style="display: none">Play Again</button>
       <p id="score">
         Current Score <br />
         Enemy 0 | Human 0
       </p>
+      <button id="playAgainButton" class="hidden">Play Again</button>
     </div>
 
     <script src="script.js"></script>
