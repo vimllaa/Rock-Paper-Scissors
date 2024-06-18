@@ -6,8 +6,11 @@ let round = 0;
 const initMessage = document.querySelector("p");
 const enemyScore = document.getElementById("score");
 const roundKeeper = document.getElementById("roundKeeper");
-const weaponBtns = document.querySelectorAll("#weaponContainer button");
-const enemyWeapon = document.getElementById("enemyWeapon");
+const weaponBtns = document.querySelectorAll("#userWeapon button");
+
+const enemyRockButton = document.getElementById("enemyRock");
+const enemyPaperButton = document.getElementById("enemyPaper");
+const enemyScissorsButton = document.getElementById("enemyScissors");
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * validChoices.length);
@@ -60,9 +63,25 @@ function resetGame() {
 weaponBtns.forEach((button) => {
   button.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
+
     playRound(button.id, computerChoice);
     round++;
     roundKeeper.innerHTML = `Round ${round}`;
+
+    if (computerChoice === "scissors") {
+      enemyScissorsButton.classList.add("flash");
+    } else if (computerChoice === "rock") {
+      enemyRockButton.classList.add("flash");
+    } else if (computerChoice === "paper") {
+      enemyPaperButton.classList.add("flash");
+    }
+
+    setTimeout(() => {
+      enemyRockButton.classList.remove("flash");
+      enemyPaperButton.classList.remove("flash");
+      enemyScissorsButton.classList.remove("flash");
+    }, 500); // Duration of the flash animation
+
     if (round === 5) {
       endGame();
       playAgainButton.classList.add("visible");

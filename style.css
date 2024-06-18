@@ -32,7 +32,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  height: 60vh;
+  height: 50vh;
 }
 
 /* Title and Round Keeper Styles */
@@ -54,21 +54,21 @@ body {
   margin-bottom: 20px;
 }
 
-.innerWeaponContainer {
-  margin: 10px;
-  padding: 10px;
-}
-
 .weaponContainer button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #fff;
   border-radius: 5px;
+}
+
+.userWeaponContainer button:hover {
+  background-color: #ddd;
   cursor: pointer;
 }
 
-.weaponContainer button:hover {
-  background-color: #ddd;
+.userWeaponContainer,
+.enemyWeaponContainer {
+  margin-top: 20px;
 }
 
 /* Current Result and Score Styles */
@@ -100,9 +100,25 @@ body {
 }
 
 #playAgainButton:hover {
-  background-color: #ddd;
+  background-color: #63c76a93;
 }
 
 img {
   width: 50px;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgb(41, 134, 29);
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(41, 134, 29);
+  }
+}
+
+.flash {
+  animation: flash 2s ease;
 }
