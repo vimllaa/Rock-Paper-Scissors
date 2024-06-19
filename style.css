@@ -1,28 +1,47 @@
 /* General Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* 1. Use a more-intuitive box-sizing model. */
+  margin: 0; /* 2. Remove default margin */
+}
+
 body,
 h1,
 h2,
+h3,
 p,
 button {
   margin: 0;
   padding: 5px;
-  overflow: hidden;
+  overflow-wrap: break-word; /* 7. Avoid text overflows */
 }
 
-h3 {
-  margin: 15px;
-}
-
-/* Body Styles */
 body {
+  line-height: 1.5; /* 3. Add accessible line-height */
+  -webkit-font-smoothing: antialiased; /* 4. Improve text rendering */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #3a7e5f;
   font-family: "Happy Monkey", system-ui;
-  margin: 0;
   padding: 0;
+}
+
+/* Media Defaults */
+
+input,
+button,
+textarea,
+select {
+  font: inherit; /* 6. Remove built-in form typography styles */
+}
+
+/* Root Stacking Context */
+#root,
+#__next {
+  isolation: isolate; /* 8. Create a root stacking context */
 }
 
 /* Game Container Styles */
@@ -56,7 +75,6 @@ body {
 .userWeaponContainer {
   display: flex;
   justify-content: center;
-  flex-direction: row;
   width: 100%;
 }
 
@@ -78,7 +96,7 @@ body {
 }
 
 .gameKeeperDisplay {
-  width: 80%;
+  width: 60%;
   max-width: 800px;
   background-color: #3a7e5f;
   padding: 10px;
@@ -122,9 +140,9 @@ body {
 
 img {
   width: 50px;
-  max-width: 100%;
 }
 
+/* Animations */
 @keyframes flash {
   0% {
     background-color: rgb(41, 134, 29);
@@ -163,8 +181,24 @@ td {
   font-size: 1em;
 }
 
-/* Animations */
+/* Button Click Animation */
+@keyframes buttonClick {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #125f06;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
 
+.button-click {
+  animation: buttonClick 1s ease-in-out;
+}
+
+/* Fade In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -178,65 +212,53 @@ td {
   animation: fadeIn 1s ease-in;
 }
 
-/* Button Click Animation */
-@keyframes buttonClick {
-  0% {
-    background-color: #fff;
-  }
-  50% {
-    background-color: #125f06;
-  }
-
-  100% {
-    background-color: #fff;
-  }
-}
-
-.button-click {
-  animation: buttonClick 1s ease-in-out;
-}
-
 /* Media Queries */
 @media (max-width: 600px) {
+  .gameContainer {
+    width: 90%;
+  }
+
   .userWeaponContainer {
     flex-direction: row;
   }
 
-  .gameContainer h1 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-  }
-
-  .gameKeeperDisplay {
-    margin-bottom: 5px;
-  }
-
-  .gameContainer h2 {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-  }
-
-  .gameContainer h3 {
-    font-size: 1em;
-    margin: 5px;
-  }
-
+  .gameContainer h1,
+  .gameContainer h2,
+  .gameContainer h3,
   p {
+    font-size: 0.7em;
+    margin: 2px;
+  }
+
+  h1 {
     font-size: 0.7em;
   }
 
-  .userWeaponContainer button {
-    margin: 5px;
+  #roundKeeper {
+    font-size: 0.7em;
   }
 
   .gameKeeperDisplay {
-    width: 80%;
+    margin-bottom: 5px;
+    width: 70%;
+  }
+
+  .userWeaponContainer button {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 40px;
   }
 }
 
-@media (min-width: 900px) {
+@media (max-width: 900px) {
   body {
     height: 100vh;
+    width: 100%;
   }
 
   .gameContainer {
@@ -245,11 +267,11 @@ td {
   }
 
   .gameContainer h1 {
-    font-size: 2.5em;
+    font-size: 1em;
   }
 
   .gameContainer h2 {
-    font-size: 2em;
+    font-size: 0.1em;
   }
 
   .userWeaponContainer button {
@@ -263,11 +285,13 @@ td {
   }
 
   #score {
-    width: 50%;
+    width: 70%;
   }
 
   th,
   td {
-    font-size: 1.2em;
+    font-size: 0.7em;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
