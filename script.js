@@ -3,12 +3,13 @@ let humanScore = 0;
 let computerScore = 0;
 let round = 0;
 
-const initMessage = document.querySelector("p");
+const initMessage = document.getElementById("initDisplay");
 const enemyScore = document.getElementById("enemyScore");
 const userScore = document.getElementById("userScore");
 const roundKeeper = document.getElementById("roundKeeper");
 const weaponBtns = document.querySelectorAll("#userWeapon button");
 const enemyChoiseDisplay = document.getElementById("choiseByEnemy");
+const roundKeeperFive = document.getElementById("roundKeeperFive");
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * validChoices.length);
@@ -56,7 +57,7 @@ function resetGame() {
   initMessage.textContent = "";
   enemyScore.innerHTML = `0`;
   userScore.innerHTML = `0`;
-  roundKeeper.innerHTML = `Round ${round}`;
+  roundKeeperFive.classList.remove("roundBackground");
   playAgainButton.classList.remove("visible");
   weaponBtns.forEach((button) => (button.disabled = false));
   enemyChoiseDisplay.src = `Images/questionmark.svg`;
@@ -69,8 +70,8 @@ weaponBtns.forEach((button) => {
     const computerChoice = getComputerChoice();
     button.classList.add("button-click");
     playRound(button.id, computerChoice);
+    setActiveRound(round);
     round++;
-    roundKeeper.innerHTML = `Round ${round}`;
 
     if (round === 5) {
       endGame(humanScore, computerScore);
@@ -87,4 +88,17 @@ function displayEnemyChoise(weapon) {
 
   void enemyChoiseDisplay.offsetWidth;
   enemyChoiseDisplay.classList.add("fade-in");
+}
+
+function setActiveRound(round) {
+  document.querySelectorAll("#roundKeeper li").forEach((li) => {
+    li.classList.remove("roundBackground");
+  });
+
+  const activeItem = document.querySelector(
+    `#roundKeeper li:nth-child(${round + 1})`
+  );
+  if (activeItem) {
+    activeItem.classList.add("roundBackground");
+  }
 }

@@ -71,6 +71,36 @@ select {
   font-size: 1.5em;
 }
 
+/* Round keeper style */
+
+.roundKeeperDiv {
+  display: inline-block;
+}
+
+.roundKeeperList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roundKeeperList li {
+  display: inline-block;
+  margin: 10px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px; /* Aligns the text vertically */
+  border-radius: 50%; /* Makes the li elements circular */
+  background-color: #f0f0f0; /* Default background color */
+  color: black; /* Default text color */
+}
+
+.roundKeeperList li.roundBackground {
+  background-color: #125f06; /* Active round background color */
+  color: white;
+}
+
 /* Weapon Container Styles */
 .userWeaponContainer {
   display: flex;
@@ -167,11 +197,6 @@ img {
   animation: flash 2s ease;
 }
 
-#roundKeeper {
-  color: #12650b;
-  font-size: 1.2em;
-}
-
 table {
   border: 1px solid black;
   table-layout: fixed;
@@ -247,13 +272,10 @@ button[disabled] {
   p {
     font-size: 0.7em;
     margin: 2px;
+    padding: 0px;
   }
 
   h1 {
-    font-size: 0.7em;
-  }
-
-  #roundKeeper {
     font-size: 0.7em;
   }
 
@@ -271,6 +293,21 @@ button[disabled] {
 
   img {
     width: 40px;
+  }
+
+  .roundKeeperList li {
+    display: inline-block;
+    margin: 5px;
+    padding: 0;
+    width: 10px;
+    height: 10px;
+    font-size: 0.5rem;
+    text-align: center;
+    line-height: 10px; /* Aligns the text vertically */
+  }
+
+  .roundKeeperDiv p {
+    margin-bottom: -8px;
   }
 }
 
