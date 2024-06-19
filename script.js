@@ -35,14 +35,17 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-function endGame() {
+function endGame(humanScore, enemyScore) {
   weaponBtns.forEach((button) => (button.disabled = true));
+
   if (humanScore > enemyScore) {
     initMessage.innerHTML =
-      "Game Over!  <br /> Congratz you won! Thanks for playing.";
-  } else {
+      "You won! Congratulations! <br />  Thanks for playing.";
+  } else if (enemyScore > humanScore) {
     initMessage.innerHTML =
       "Game Over! <br /> Sorry you lost. Thanks for playing.";
+  } else {
+    initMessage.innerHTML = "It's a tie! Play again!";
   }
 }
 
@@ -64,20 +67,13 @@ function resetGame() {
 weaponBtns.forEach((button) => {
   button.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
-
     button.classList.add("button-click");
-
-    // Remove the class after the animation completes
-    setTimeout(() => {
-      button.classList.remove("button-click");
-    }, 300);
-
     playRound(button.id, computerChoice);
     round++;
     roundKeeper.innerHTML = `Round ${round}`;
 
     if (round === 5) {
-      endGame();
+      endGame(humanScore, computerScore);
       playAgainButton.classList.add("visible");
     }
   });

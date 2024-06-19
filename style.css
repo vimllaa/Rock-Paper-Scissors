@@ -80,10 +80,13 @@ select {
 
 .userWeaponContainer button {
   padding: 10px 20px;
+  border: solid grey;
   font-size: 1em;
   background-color: #fff;
   border-radius: 5px;
   margin: 15px;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 .userWeaponContainer button:hover {
@@ -96,8 +99,13 @@ select {
 }
 
 .gameKeeperDisplay {
-  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
   max-width: 800px;
+  min-height: 10vh;
+
   background-color: #3a7e5f;
   padding: 10px;
   border-radius: 5px;
@@ -123,7 +131,7 @@ select {
   background-color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 10px;
   transition: background-color 0.3s ease, height 0.5s ease, visibility 0.5s ease;
   height: 45px;
   visibility: hidden;
@@ -198,6 +206,17 @@ td {
   animation: buttonClick 1s ease-in-out;
 }
 
+button:disabled,
+button[disabled] {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 15px;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 /* Fade In Animation */
 @keyframes fadeIn {
   from {
@@ -267,7 +286,8 @@ td {
   }
 
   .gameContainer h1 {
-    font-size: 1em;
+    width: 110%;
+    font-size: 1.2em;
   }
 
   .gameContainer h2 {
@@ -282,6 +302,7 @@ td {
 
   .gameKeeperDisplay {
     width: 70%;
+    height: 20%;
   }
 
   #score {
